@@ -46,7 +46,7 @@ class CursoController extends Controller
         $siglaOriginal = $request->sigla_original;
         
         $updateArray = array('sigla' => (string) $request->sigla , 'nombre' => (string) $request->nombre, 'descripcion' => $request->descripcion);
-
+        
         Curso::where('sigla', $siglaOriginal)->update($updateArray);
         
         return redirect()->route('curso');
