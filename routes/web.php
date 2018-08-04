@@ -114,3 +114,6 @@ Route::post('/eliminarMatricula', 'matriculaController@eliminarMatricula')
 Route::get('/admin/profesor', 'ProfesorController@profesor')
     ->middleware('is_admin')
     ->name('profesor');
+
+Route::post('/crearProfesor', 'ProfesorController@crearProfesor')
+    ->name('crear_profesor');

@@ -47,6 +47,7 @@
                         <option value="{{$curso->id}}" >Sigla: {{$curso->sigla}} Nombre: {{$curso->nombre}}</option>
                     @endforeach
                 </select>
+
             </div>
         </form>
         <form method="POST" action="{{ route('editarInfo_curso') }}">
