@@ -53,11 +53,23 @@ class AlumnoController extends Controller{
     public function editarInfo_alumno(Request $request){
         $rutOriginal = $request->rut_original;
 
+        $alumnocon= new AlumnoController;
+        $alumno = $alumnocon->buscarAlumno($rutOriginal);
+        $id= $alumno->user_id;
         $updateArray = array('rut' => (string) $request->rut , 'nombres' => (string) $request->nombre, 'apellido_paterno' => $request->apellido_paterno, 'apellido_materno'=> $request->apellido_materno);
-        
+        $updateUser= array('name' =>(string) $request->nombre);
         Alumno::where('rut', $rutOriginal)->update($updateArray);
+        User::where('id' , $id)->update($updateUser);
         return redirect()->route('alumno');
         
+    }
+
+    public function buscarAlumno(String $rut){
+        //$alum_sel = $request->alumn_sel;
+        
+        $alumnos = Alumno::all();
+        $datos_alu = $alumnos->where('rut', $rut)->first();
+        return $datos_alu;
     }
 
     public function eliminarAlumno(Request $request){
