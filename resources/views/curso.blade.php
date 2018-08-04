@@ -34,8 +34,8 @@
                 </div>
             </form>
     </div>
-    <!--Editar Curso--> 
 
+    <!--Editar Curso-->
     <div class="col-md-4 float-left">
         <h2>Editar Curso</h2>
         <form method="POST" action="{{ route('mostrarInfo_curso') }}" >
@@ -67,14 +67,50 @@
                     <div class="col-md-12">
                         <input id="descripcion_edit" type="text" class="form-control" name="descripcion" placeholder="Descripción del curso" required>
                     </div>
-                </div>  
-                <input type="text" id="sigla_original" name="sigla_original" style="opacity: 0; width: 0px;">
+                </div>
+                <input type="text" id="id" name="id" style="opacity: 0; width: 0px;">
                 <div class="form-group row col-md-12">
                     <button type="submit" class="btn btn-primary">Editar Alumno</button>
                 </div>
         </form>
     </div>
     <!--Fin Sección Editar Curso-->
+    <script>
+
+    function searchInfoCursoAjax( id){
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('input[name=_token]').val(),
+            },
+            method :'POST',
+            url : '/admin/mostrarCurso',
+            data : {
+                'id': id
+            },
+            success : function(data){
+                $("#sigla_edit").val(data.sigla);
+                $("#nombre_edit").val(data.nombre);
+                $("#descripcion_edit").val(data.descripcion);
+                //$("#sigla_original").val(data.sigla);
+            },
+            error : function (data) {
+                console.log(data+'error');
+            }
+        });
+    }
+
+  $(document).ready(function(){
+      $('#edit_select').change( function(){
+          id = $(this).val();
+          searchInfoCursoAjax(id);
+      });
+  });
+
+  </script>
+
+
+
+
 
     <!-- Eliminar Curso-->
     <div class="col-md-4 float-left">
@@ -98,39 +134,6 @@
         </form>
     </div>
   </div>
-
-  <script>
-
-function searchInfoCursoAjax( sigla){
-    $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('input[name=_token]').val(),
-            },
-            method :'POST',
-            url : '/admin/mostrarCurso',
-            data : {
-                'sigla': sigla
-            },
-            success : function(data){
-                $("#sigla_edit").val(data.sigla);
-                $("#nombre_edit").val(data.nombre);
-                $("#descripcion_edit").val(data.descripcion);
-                $("#sigla_original").val(data.sigla);
-            },
-            error : function (data) {
-                console.log(data+'error');
-            }
-        });
-}
-
-$(document).ready(function(){
-    $('#edit_select').change( function(){
-        sigla = $(this).val();
-        searchInfoCursoAjax(sigla);
-    });
-});
-
-</script>
 
   <!--volver-->
     <form action="{{ route('admin') }}">

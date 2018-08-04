@@ -53,7 +53,7 @@ Route::get('/admin/curso', 'CursoController@curso')
     ->middleware('is_admin')
     ->name('curso');
 
-Route::post('/admin/curso', 'CursoController@mostrarInfo_curso')
+Route::post('/admin/mostrarCurso', 'CursoController@mostrarInfo_curso')
     ->name('mostrarInfo_curso');
 
 Route::post('/admin/editarCurso', 'CursoController@editarInfo_curso')

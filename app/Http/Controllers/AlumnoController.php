@@ -79,11 +79,5 @@ class AlumnoController extends Controller{
         return redirect()->route('alumno');
 
     }
-    public function buscarAlumno(Request $request){
-        $alum_sel = $request->alumn_sel;
-        $alumnos = Alumno::all();
-        $alum_valor = $alumnos->find($alum_sel);
-        return $alum_valor;
-    }
 
 }
