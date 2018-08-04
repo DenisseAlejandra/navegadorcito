@@ -66,6 +66,20 @@
           </div>
       </div>
     </div>
+
+    <!--Mantenedor Profesores -->
+    <div class="float-left col-md-4">
+      <h2>Mantenedor Profesores</h2>
+      <div class="form-group row mb-0">
+          <div class="col-md-4 offset-md-3">
+              <button type="submit" class="btn btn-primary" value="enviar" onclick="location.href = '{{ route('profesor') }}'"/>
+                  {{ __('Matricula Profesores') }}
+              </button>
+
+          </div>
+      </div>
+    </div>
+
 </div>
 
 

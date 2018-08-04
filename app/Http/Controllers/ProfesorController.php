@@ -15,7 +15,8 @@ class ProfesorController extends Controller{
     public function profesor(Profesor $profesor)
     {
         $profesores = Profesor::all();
-            return view('profesor')->with(["profesores" => $profesores , "profesorInfo" => $profesor]);
+            return view('profesor');
+            //->with(["profesores" => $profesores , "profesorInfo" => $profesor]);
     }
 
     public function crearUsuarioProfesor(Request $request){

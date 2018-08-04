@@ -22,6 +22,12 @@ class CreateInstanciaCursosTable extends Migration
                   ->references('id')
                   ->on('cursos')
                   ->onDelete('cascade');
+            $table->string('profesor_id');
+            $table->foreign('profesor_id')
+                  ->references('rut')
+                  ->on('profesores')
+                  ->onDelete('cascade');
+
             $table->timestamps();
         });
     }
