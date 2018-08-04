@@ -34,7 +34,7 @@ class MatriculaController extends Controller
         $matricula->instanciaCurso()->associate($instancia);
 
         $alumnocon= new AlumnoController;
-        $alumno = $alumnocon->buscarAlumno($request);
+        $alumno = $alumnocon->buscarAlumno($request->alumno_sel);
         $matricula->alumno()->associate($alumno->rut);
 
         $estadocon = new EstadoMatriculaController;
