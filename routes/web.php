@@ -56,6 +56,9 @@ Route::get('/admin/curso', 'CursoController@curso')
 Route::post('/admin/curso', 'CursoController@mostrarInfo_curso')
     ->name('mostrarInfo_curso');
 
+Route::post('/admin/editarCurso', 'CursoController@editarInfo_curso')
+    ->name('editarInfo_curso');
+
 Route::post('/admin/crearCurso', 'CursoController@crearCurso')
     ->name('crear_curso');
 
