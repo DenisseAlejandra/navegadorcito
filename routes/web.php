@@ -24,21 +24,11 @@ Route::get('/admin', 'AdminController@admin')
     ->middleware('is_admin')
     ->name('admin');
 
-//Perfil Alumno
-Route::get('/alumno', 'PerfilAlumnoController@perfilAlumno')
-    ->middleware('is_alumno')
-    ->name('perfilAlumno');
-
-
-//Administrador-Alumno
 Route::get('/admin/alumno', 'AlumnoController@alumno')
     ->middleware('is_admin')
     ->name('alumno');
 
-Route::post('/admin/editarAlumno', 'AlumnoController@editarInfo_alumno')
-    ->name('editarInfo_alumno');
-
-Route::post('/admin/mostrarAlumno', 'AlumnoController@mostrarInfo_alumno')
+Route::post('/admin/alumno', 'AlumnoController@mostrarInfo_alumno')
     ->name('mostrarInfo_alumno');
 
 Route::post('/admin/crearAlumno', 'AlumnoController@crearAlumno')
@@ -47,11 +37,8 @@ Route::post('/admin/crearAlumno', 'AlumnoController@crearAlumno')
 Route::post('/admin/eliminarAlumno', 'AlumnoController@eliminarAlumno')
     ->name('eliminar_alumno');
 
-
-
-
-
-//Rutas Vista Administrador-Curso
+Route::post('/admin/editarAlumno', 'AlumnoController@editarAlumno')
+    ->name('editar_alumno');
 
 Route::get('/admin/curso', 'CursoController@curso')
     ->middleware('is_admin')
@@ -69,9 +56,6 @@ Route::post('/admin/modificarCurso', 'CursoController@modificarCurso')
 Route::post('/admin/eliminarCurso', 'CursoController@eliminarCurso')
     ->name('eliminar_curso');
 
-
-//Rutas Vista Administrador-InstanciaCurso
-
 Route::get('/admin/instancia', 'InstanciaCursoController@instancia')
     ->middleware('is_admin')
     ->name('instancia');
@@ -81,9 +65,6 @@ Route::post('/admin/crearInstanciaCurso', 'InstanciaCursoController@crearInstanc
 
 Route::post('/admin/eliminarInstancia', 'InstanciaCursoController@eliminarInstancia')
     ->name('eliminar_instancia');
-
-
-//Rutas Vista Administrador-EstadoMatricula
 
 Route::get('/admin/estado', 'EstadoMatriculaController@estado')
     ->middleware('is_admin')
@@ -98,9 +79,6 @@ Route::post('/admin/eliminarEstado', 'EstadoMatriculaController@eliminarEstado')
 Route::post('/admin/crearEstadoMatricula', 'estadoMatriculaController@crearEstadoMatricula')
     ->name('crear_estadoMatricula');
 
-
-//Rutas Vista Administrador- Matricula
-
 Route::get('/admin/matricula', 'matriculaController@matricula')
     ->middleware('is_admin')
     ->name('matricula');
@@ -113,3 +91,10 @@ Route::post('/modificarMatricula', 'matriculaController@modificarMatricula')
 
 Route::post('/eliminarMatricula', 'matriculaController@eliminarMatricula')
     ->name('eliminar_matricula');
+
+Route::get('/profesores', 'ProfesorController@admin')
+    ->middleware('is_admin')
+    ->name('admin');
+	
+Route::post('/admin/profesor', 'ProfesorController@mostrarInfo_profesor')
+    ->name('mostrarInfo_profesor');
