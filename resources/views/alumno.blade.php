@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="card-body col-md-12">
-
     <!-- Formulario agregar alumno -->
     <div class="float-left col-md-4">
         <h2>Crear Alumno</h2>

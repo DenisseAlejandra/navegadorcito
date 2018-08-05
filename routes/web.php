@@ -24,11 +24,24 @@ Route::get('/admin', 'AdminController@admin')
     ->middleware('is_admin')
     ->name('admin');
 
+
+Route::get('/perfilAlumno', 'PerfilAlumnoController@perfilAlumno')
+    ->middleware('is_alumno')
+    ->name('perfilAlumno');
+
+Route::get('/asignaturaAlumno' , 'AsignaturaAlumnoController@asignaturaAlumno')
+    ->middleware('is_alumno')
+    ->name('asignaturaAlumno');
+
+//Admin-Alumno
 Route::get('/admin/alumno', 'AlumnoController@alumno')
     ->middleware('is_admin')
     ->name('alumno');
 
-Route::post('/admin/alumno', 'AlumnoController@mostrarInfo_alumno')
+Route::post('/admin/editarAlumno', 'AlumnoController@editarInfo_alumno')
+    ->name('editarInfo_alumno');
+
+Route::post('/admin/mostrarAlumno', 'AlumnoController@mostrarInfo_alumno')
     ->name('mostrarInfo_alumno');
 
 Route::post('/admin/crearAlumno', 'AlumnoController@crearAlumno')
@@ -37,8 +50,7 @@ Route::post('/admin/crearAlumno', 'AlumnoController@crearAlumno')
 Route::post('/admin/eliminarAlumno', 'AlumnoController@eliminarAlumno')
     ->name('eliminar_alumno');
 
-Route::post('/admin/editarAlumno', 'AlumnoController@editarAlumno')
-    ->name('editar_alumno');
+//FIN Admin-Alumno
 
 Route::get('/admin/curso', 'CursoController@curso')
     ->middleware('is_admin')
@@ -93,8 +105,8 @@ Route::post('/eliminarMatricula', 'matriculaController@eliminarMatricula')
     ->name('eliminar_matricula');
 
 Route::get('/profesores', 'ProfesorController@admin')
-    ->middleware('is_admin')
-    ->name('admin');
+    ->middleware('is_profesor')
+    ->name('profesores');
 	
 Route::post('/admin/profesor', 'ProfesorController@mostrarInfo_profesor')
     ->name('mostrarInfo_profesor');
