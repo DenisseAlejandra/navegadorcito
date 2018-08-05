@@ -11,6 +11,11 @@ class InstanciaCurso extends Model
 	    return $this->belongsTo('navegadorcito\Curso', 'curso_id', 'id');
 	}
 
+  public function profesor()
+  {
+    return $this->belongsTo('navegadorcito\Profesor', 'profesor_id', 'rut');
+  }
+
 	public function matriculaInstanciaCurso()
     {
         return $this->hasMany('navegadorcito\MatriculaInstanciaCurso', 'instanciaCurso_id', 'id');

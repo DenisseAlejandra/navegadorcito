@@ -7,19 +7,19 @@ use Illuminate\Http\Request;
 use navegadorcito\Profesor;
 use navegadorcito\User;
 
-class ProfesorController extends Controller
-{
-  public function __construct()
-  {
-      $this->middleware('auth');
-  }
-  public function profesor(Profesor $profesor)
-  {
-      //$profesores = Profesor::all();
-          return view('profesor');
-          //->with(["profesores" => $profesores , "profesorInfo" => $profesor]);
-  }
-  public function crearUsuarioProfesor(Request $request){
+class ProfesorController extends Controller{
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    public function profesor(Profesor $profesor)
+    {
+        $profesores = Profesor::all();
+            return view('profesor');
+            //->with(["profesores" => $profesores , "profesorInfo" => $profesor]);
+    }
+
+    public function crearUsuarioProfesor(Request $request){
         $user = new User;
         $user->name = $request->nombre;
         $user->email = $request->email;
@@ -62,7 +62,6 @@ class ProfesorController extends Controller
             $datos_prof = $profesores->where('rut', $prof_selo)->first();
             return $datos_prof;
         }
-
 
 
 }

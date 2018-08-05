@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="form-group row">
-                
+
                     <div class="col-md-12">
                         <input id="materno" type="text" class="form-control" name="apellido_materno" placeholder="Apellido Materno" required>
                     </div>
@@ -32,13 +32,13 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                
+
                     <div class="col-md-12">
                         <input id="email" type="text" class="form-control" name="email" placeholder="Ingrese email" required>
                     </div>
                 </div>
                 <div class="form-group row">
-                
+
                     <div class="col-md-12">
                         <input id="password" type="password" class="form-control" name="password" placeholder="Ingrese contraseña" required>
                     </div>
@@ -116,7 +116,7 @@
                     @endforeach
                 </select>
             </div>
-               
+
             <div class="form-group row col-md-12">
                 <button type="submit" class="btn btn-primary">Eliminar Alumno</button>
             </div>
@@ -162,7 +162,7 @@
             searchInfoAlumnoAjax(rutAlumno);
         });
     });
-   
+
 </script>
 
 
@@ -171,7 +171,7 @@
   <div class="col-md-11 float-left">
     <div class="col-md-4 offset-md-3 float-right">
         <button type="submit" class="btn btn-secondary float-right" id="ir_admin" >
-            {{ __('Volver al Munú') }}
+            {{ __('Volver al Menú') }}
         </button>
     </div>
   </div>
