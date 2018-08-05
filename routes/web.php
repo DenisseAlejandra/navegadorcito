@@ -50,7 +50,7 @@ Route::post('/admin/crearAlumno', 'AlumnoController@crearAlumno')
 Route::post('/admin/eliminarAlumno', 'AlumnoController@eliminarAlumno')
     ->name('eliminar_alumno');
 
-//FIN Admin-Alumno
+//Curso
 
 Route::get('/admin/curso', 'CursoController@curso')
     ->middleware('is_admin')
@@ -67,6 +67,9 @@ Route::post('/admin/modificarCurso', 'CursoController@modificarCurso')
 
 Route::post('/admin/eliminarCurso', 'CursoController@eliminarCurso')
     ->name('eliminar_curso');
+
+Route::post('/admin/editarCurso', 'CursoController@editarInfo_curso')
+    ->name('editarInfo_curso');
 
 // Instancia Curso
 Route::get('/admin/instancia', 'InstanciaCursoController@instancia')

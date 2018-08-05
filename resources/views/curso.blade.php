@@ -35,11 +35,7 @@
             </form>
     </div>
 
-<<<<<<< HEAD
-
-=======
     <!--Editar Curso-->
->>>>>>> 0a0173e9afc296505fe8187817c4b93519f9e01c
     <div class="col-md-4 float-left">
         <h2>Editar Curso</h2>
         <form method="POST" action="{{ route('mostrarInfo_curso') }}" >
@@ -55,15 +51,12 @@
             </div>
         </form>
 
-
-
-
         <form method="POST" action="{{ route('editarInfo_curso') }}">
         @csrf
                 <div class="form-group row">
                     <div class="col-md-12">
 
-                        <input id="sigla_edit" type="text" class="form-control" name="sigla" required autofocus placeholder="Ingrese ">
+                        <input id="sigla_edit" type="text" class="form-control" name="sigla" required autofocus placeholder="Ingrese sigla">
                     </div>
                 </div>
 
@@ -80,70 +73,11 @@
                 </div>
 
                 <input type="text" id="id_curso" name="id_curso" style="opacity: 0; width: 0px;">
-            <div class="form-group row col-md-12">
-                <button type="submit" class="btn btn-primary">Editar Curso</button>
-            </div>
-
-                        <input id="sigla_edit" type="text" class="form-control" name="sigla" required autofocus placeholder="Ingrese sigla">
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <div class="col-md-12">
-                        <input id="nombre_edit" type="text" class="form-control" name="nombre" placeholder="Ingrese nombre" required>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <div class="col-md-12">
-                        <input id="descripcion_edit" type="text" class="form-control" name="descripcion" placeholder="Descripción del curso" required>
-                    </div>
-                </div>
-                <input type="text" id="id" name="id" style="opacity: 0; width: 0px;">
                 <div class="form-group row col-md-12">
-                    <button type="submit" class="btn btn-primary">Editar Alumno</button>
+                    <button type="submit" class="btn btn-primary">Editar Curso</button>
                 </div>
-        </form>
-    </div>
-    <!--Fin Sección Editar Curso-->
-    <script>
 
-    function searchInfoCursoAjax( id){
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('input[name=_token]').val(),
-            },
-            method :'POST',
-            url : '/admin/mostrarCurso',
-            data : {
-                'id': id
-            },
-            success : function(data){
-                $("#sigla_edit").val(data.sigla);
-                $("#nombre_edit").val(data.nombre);
-                $("#descripcion_edit").val(data.descripcion);
-                //$("#sigla_original").val(data.sigla);
-            },
-            error : function (data) {
-                console.log(data+'error');
-            }
-        });
-    }
-
-  $(document).ready(function(){
-      $('#edit_select').change( function(){
-          id = $(this).val();
-          searchInfoCursoAjax(id);
-      });
-  });
-
-  </script>
-
-
-
-
-
-
+      </div>
 
     <!-- Eliminar Curso-->
     <div class="col-md-4 float-left">
@@ -170,10 +104,10 @@
 
   <!--volver-->
     <form action="{{ route('admin') }}">
-    <div class="col-md-4 float-right">
-      <div class="col-md-4 offset-md-3">
-          <button type="submit" class="btn btn-secondary" id="ir_admin" >
-              {{ __('Volver') }}
+    <div class="col-md-11 float-left">
+      <div class="col-md-4 offset-md-3 float-right">
+          <button type="submit" class="btn btn-secondary float-right" id="ir_admin" >
+              {{ __('Volver al Menú') }}
           </button>
       </div>
     </div>
@@ -213,7 +147,7 @@
             searchInfoCursoAjax(idCurso);
         });
     });
-   
+
 </script>
 
 

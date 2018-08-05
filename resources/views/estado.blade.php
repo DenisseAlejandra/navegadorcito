@@ -69,10 +69,11 @@
 
     <!--volver-->
       <form action="{{ route('admin') }}">
-      <div class="col-md-4 float-right">
-        <div class="col-md-4 offset-md-3">
-            <button type="submit" class="btn btn-secondary" id="ir_admin" >
-                {{ __('Volver') }}
+      <div class="col-md-11 float-left">
+        <br>
+        <div class="col-md-4 offset-md-3 float-right">
+            <button type="submit" class="btn btn-secondary float-right" id="ir_admin" >
+                {{ __('Volver al Menú') }}
             </button>
         </div>
       </div>
