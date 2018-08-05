@@ -35,7 +35,11 @@
             </form>
     </div>
 
+<<<<<<< HEAD
+
+=======
     <!--Editar Curso-->
+>>>>>>> 0a0173e9afc296505fe8187817c4b93519f9e01c
     <div class="col-md-4 float-left">
         <h2>Editar Curso</h2>
         <form method="POST" action="{{ route('mostrarInfo_curso') }}" >
@@ -44,16 +48,42 @@
                 <select class="form-control" id="edit_select" >
                 <option disabled selected>Seleccione un Curso</option>
                     @foreach($cursos as $curso)
-                        <option value="{{$curso->id}}" >Sigla: {{$curso->sigla}} Nombre: {{$curso->nombre}}</option>
+                        <option value="{{$curso->id}}" >{{$curso->sigla}}-{{$curso->nombre}}</option>
                     @endforeach
                 </select>
 
             </div>
         </form>
+
+
+
+
         <form method="POST" action="{{ route('editarInfo_curso') }}">
         @csrf
                 <div class="form-group row">
                     <div class="col-md-12">
+
+                        <input id="sigla_edit" type="text" class="form-control" name="sigla" required autofocus placeholder="Ingrese ">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <input id="nombre_edit" type="text" class="form-control" name="nombre" placeholder="Ingrese nombre del curso" required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <textarea id="descripcion_edit" type="text" class="form-control" name="descripcion" placeholder="Descripción del Curso" required> </textarea>
+                    </div>
+                </div>
+
+                <input type="text" id="id_curso" name="id_curso" style="opacity: 0; width: 0px;">
+            <div class="form-group row col-md-12">
+                <button type="submit" class="btn btn-primary">Editar Curso</button>
+            </div>
+
                         <input id="sigla_edit" type="text" class="form-control" name="sigla" required autofocus placeholder="Ingrese sigla">
                     </div>
                 </div>
@@ -113,6 +143,8 @@
 
 
 
+
+
     <!-- Eliminar Curso-->
     <div class="col-md-4 float-left">
         <h2>Eliminar Curso</h2>
@@ -147,6 +179,42 @@
     </div>
   </form>
 
+
+<script>
+
+    function searchInfoCursoAjax(idCurso){
+        $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('input[name=_token]').val(),
+                },
+                method :'POST',
+                url : '/admin/mostrarCurso',
+                data : {
+                    'idCurso': idCurso
+                },
+                success : function(data){
+                    $("#sigla_edit").val(data.sigla);
+                    $("#nombre_edit").val(data.nombre);
+                    $("#descripcion_edit").val(data.descripcion);
+                    $("#id_curso").val(data.id);
+                },
+                error : function (data) {
+                    console.log(data+'error');
+                }
+            });
+    }
+
+
+
+
+    $(document).ready(function(){
+        $('#curso_sel').change( function(){
+            idCurso = $(this).val();
+            searchInfoCursoAjax(idCurso);
+        });
+    });
+   
+</script>
 
 
 @endsection

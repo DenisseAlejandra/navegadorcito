@@ -68,6 +68,7 @@ Route::post('/admin/modificarCurso', 'CursoController@modificarCurso')
 Route::post('/admin/eliminarCurso', 'CursoController@eliminarCurso')
     ->name('eliminar_curso');
 
+// Instancia Curso
 Route::get('/admin/instancia', 'InstanciaCursoController@instancia')
     ->middleware('is_admin')
     ->name('instancia');
@@ -78,6 +79,7 @@ Route::post('/admin/crearInstanciaCurso', 'InstanciaCursoController@crearInstanc
 Route::post('/admin/eliminarInstancia', 'InstanciaCursoController@eliminarInstancia')
     ->name('eliminar_instancia');
 
+//Estado Matricula
 Route::get('/admin/estado', 'EstadoMatriculaController@estado')
     ->middleware('is_admin')
     ->name('estado');
@@ -91,22 +93,27 @@ Route::post('/admin/eliminarEstado', 'EstadoMatriculaController@eliminarEstado')
 Route::post('/admin/crearEstadoMatricula', 'estadoMatriculaController@crearEstadoMatricula')
     ->name('crear_estadoMatricula');
 
+//Estado Matricula Instacia Curso
 Route::get('/admin/matricula', 'matriculaController@matricula')
     ->middleware('is_admin')
     ->name('matricula');
 
-Route::post('/crearMatricula', 'matriculaController@crearMatricula')
+Route::post('/admin/crearMatricula', 'matriculaController@crearMatricula')
     ->name('crear_matricula');
 
-Route::post('/modificarMatricula', 'matriculaController@modificarMatricula')
+Route::post('/admin/modificarMatricula', 'matriculaController@modificarMatricula')
     ->name('modificar_matricula');
 
-Route::post('/eliminarMatricula', 'matriculaController@eliminarMatricula')
+Route::post('/admin/eliminarMatricula', 'matriculaController@eliminarMatricula')
     ->name('eliminar_matricula');
 
-Route::get('/profesores', 'ProfesorController@admin')
-    ->middleware('is_profesor')
-    ->name('profesores');
-	
+//Admin Profesor
+Route::get('/admin/profesor', 'ProfesorController@profesor')
+    ->middleware('is_admin')
+    ->name('profesor');
+
 Route::post('/admin/profesor', 'ProfesorController@mostrarInfo_profesor')
     ->name('mostrarInfo_profesor');
+
+Route::post('/admin/crearProfesor', 'ProfesorController@crearProfesor')
+    ->name('crear_profesor');

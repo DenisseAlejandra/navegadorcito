@@ -36,19 +36,16 @@ class CursoController extends Controller
     }
 
     public function mostrarInfo_curso(Request $request){
-        $curso_sel = $request->id;
+        $idCurso = $request->idCurso;
         $cursos = Curso::all();
-        $datos_curso = $cursos->where('id',$curso_sel);
+        $datos_curso = $cursos->where('id', $idCurso)->first();
         return $datos_curso;
     }
 
     public function editarInfo_curso(Request $request){
-        //$siglaOriginal = $request->sigla_original;
-        $idCurso = $request->id;
-
+        $idCurso = $request->id_curso;
         $updateArray = array('sigla' => (string) $request->sigla , 'nombre' => (string) $request->nombre, 'descripcion' => $request->descripcion);
         Curso::where('id', $idCurso)->update($updateArray);
-
         return redirect()->route('curso');
     }
 
