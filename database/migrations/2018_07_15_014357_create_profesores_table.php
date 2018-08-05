@@ -13,7 +13,7 @@ class CreateProfesoresTable extends Migration
      */
     public function up()
     {
-      Schema::create('profesores', function (Blueprint $table) {
+      Schema::create('profesors', function (Blueprint $table) {
         $table->string('rut')->index();
         $table->string('nombre');
         $table->string('apellido_paterno');
@@ -34,6 +34,6 @@ class CreateProfesoresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profesores');
+        Schema::dropIfExists('profesors');
     }
 }

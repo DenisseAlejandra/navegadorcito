@@ -34,7 +34,7 @@ class ProfesorController extends Controller{
          $profesor = new Profesor;
          $profesor->rut = $request->rut;
          $profesor->user()->associate($user);
-         $profesor->nombres = $request->nombre;
+         $profesor->nombre = $request->nombre;
          $profesor->apellido_materno = $request->apellido_materno;
          $profesor->apellido_paterno = $request->apellido_paterno;
          $profesor->save();
