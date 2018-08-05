@@ -25,7 +25,7 @@ class CreateInstanciaCursosTable extends Migration
             $table->string('profesor_id');
             $table->foreign('profesor_id')
                   ->references('rut')
-                  ->on('profesores')
+                  ->on('profesors')
                   ->onDelete('cascade');
 
             $table->timestamps();
