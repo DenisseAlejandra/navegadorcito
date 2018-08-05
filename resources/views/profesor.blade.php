@@ -3,7 +3,7 @@
 @section('content')
 <div class="card-body col-md-12">
 
-    <!-- Formulario agregar alumno -->
+    <!-- Formulario agregar profesor -->
     <div class="float-left col-md-4">
         <h2>Crear Profesor</h2>
         <form method="POST" action="{{ route('crear_profesor') }}" >
@@ -50,24 +50,23 @@
                 </div>
         </form>
     </div>
-    <!-- Fin formulario agregar alumno -->
-
-
-
+    <!-- Fin formulario agregar profesor -->
 </div>
+
+
+
 
 
 <!--volver-->
   <form action="{{ route('admin') }}">
-  <div class="col-md-11 float-left">
-    <div class="col-md-4 offset-md-3 float-right">
-        <button type="submit" class="btn btn-secondary float-right" id="ir_admin" >
-            {{ __('Volver al Menú') }}
+  <div class="col-md-4 float-right">
+    <div class="col-md-4 offset-md-3">
+        <button type="submit" class="btn btn-secondary" id="ir_admin" >
+            {{ __('Volver') }}
         </button>
     </div>
   </div>
 </form>
-
 
 
 @endsection
