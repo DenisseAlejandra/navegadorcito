@@ -120,3 +120,12 @@ Route::post('/admin/profesor', 'ProfesorController@mostrarInfo_profesor')
 
 Route::post('/admin/crearProfesor', 'ProfesorController@crearProfesor')
     ->name('crear_profesor');
+
+Route::post('/admin/eliminarProfesor', 'ProfesorController@eliminarProfesor')
+    ->name('eliminar_profesor');
+
+Route::post('/admin/editarProfesor', 'ProfesorController@editarProfesor')
+    ->name('editar_profesor');
+
+Route::post('/admin/mostrarProfesor', 'ProfesorController@mostrarInfo_profesor')
+    ->name('mostrarInfo_profesor');

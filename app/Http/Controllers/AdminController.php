@@ -13,7 +13,7 @@ class AdminController extends Controller{
     }
     public function admin(){
         $alumnos = Alumno::all();
-        $cursos = Curso::all(); 
+        $cursos = Curso::all();
         return view('admin')->with(["alumnos" => $alumnos, "cursos" => $cursos]);
     }
 

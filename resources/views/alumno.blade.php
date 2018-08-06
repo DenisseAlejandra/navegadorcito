@@ -94,9 +94,9 @@
                     </div>
                 </div>
                 <input type="text" id="rut_original" name="rut_original" style="opacity: 0; width: 0px;">
-            <div class="form-group row col-md-12">
-                <button type="submit" class="btn btn-primary">Editar Alumno</button>
-            </div>
+                <div class="form-group row col-md-12">
+                    <button type="submit" class="btn btn-primary">Editar Alumno</button>
+                </div>
         </form>
 
     </div>

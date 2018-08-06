@@ -13,11 +13,10 @@
 	</div>
 
 
-
 	<div class="col-md-11 mx-auto p-4">
 		<h2>Asignaturas en Curso</h2>
 		<h3>{{ date('Y')}}</h3>
-		
+
 		@if(sizeof($asignaturasActuales) > 0 )
 			<ul>
 				@foreach($asignaturasActuales as $actuales)
@@ -28,10 +27,10 @@
 		@else
 			<h4>El alumno no posee asignaturas En Curso</h4>
 		@endif
-	
-        
 
-		
+
+
+
 
 	</div>
 
@@ -45,8 +44,8 @@
 		@else
 			<h5>El alumno no posee asignaturas Cursadas</h5>
 		@endif
-		
-		
+
+
 
 	</div>
 

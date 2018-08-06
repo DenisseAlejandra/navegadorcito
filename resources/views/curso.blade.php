@@ -138,16 +138,12 @@
             });
     }
 
-
-
-
     $(document).ready(function(){
         $('#curso_sel').change( function(){
             idCurso = $(this).val();
             searchInfoCursoAjax(idCurso);
         });
     });
-
 </script>
 
 

@@ -15,7 +15,7 @@ class AlumnoController extends Controller{
 
     public function alumno(){
         $alumnos = Alumno::all();
-        return view('alumno')->with("alumnos", $alumnos);    
+        return view('alumno')->with("alumnos", $alumnos);
     }
 
 
@@ -46,18 +46,26 @@ class AlumnoController extends Controller{
         $rutAlumno = $request->rutAlumno;
         $alumnos = Alumno::all();
         $datos_alu = $alumnos->where('rut', $rutAlumno)->first();
-        return $datos_alu;  
+        return $datos_alu;
     }
 
+    public function buscarAlumno(Request $request){
+        $alum_sel = $request->rut_original;
+        $alumnos = Alumno::all();
+        $alum_valor = $alumnos->where('rut', $alum_sel)->first();
+        return $alum_valor;
+    }
 
     public function editarInfo_alumno(Request $request){
         $rutOriginal = $request->rut_original;
-
         $updateArray = array('rut' => (string) $request->rut , 'nombres' => (string) $request->nombre, 'apellido_paterno' => $request->apellido_paterno, 'apellido_materno'=> $request->apellido_materno);
-        
         Alumno::where('rut', $rutOriginal)->update($updateArray);
+
+        $updateUser = array('name' => (string) $request->nombre);
+        $alum = $this->buscarAlumno($request);
+
+        User::where('id', $alum->user_id)->update($updateUser);
         return redirect()->route('alumno');
-        
     }
 
     public function eliminarAlumno(Request $request){
@@ -65,13 +73,8 @@ class AlumnoController extends Controller{
         Alumno::where('user_id', $idUser)->delete();
         User::where('id', $idUser)->delete();
         return redirect()->route('alumno');
-        
+
     }
 
-    public function buscarAlumno(Request $request){
-        $alum_sel = $request->alumn_sel;
-        $alumnos = Alumno::all();
-        $alum_valor = $alumnos->find($alum_sel);
-        return $alum_valor;
-    }
+
 }
