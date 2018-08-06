@@ -28,27 +28,6 @@ class CursoController extends Controller
         return redirect()->route('curso');
     }
 
-    public function buscarCurso(Request $request){
-        $cur_sel = $request->curso_sel;
-        $cursos = Curso::all();
-        $curso_sigla = $cursos->find($cur_sel);
-        return $curso_sigla;
-    }
-
-    public function mostrarInfo_curso(Request $request){
-        $idCurso = $request->idCurso;
-        $cursos = Curso::all();
-        $datos_curso = $cursos->where('id', $idCurso)->first();
-        return $datos_curso;
-    }
-
-    public function editarInfo_curso(Request $request){
-        $idCurso = $request->id_curso;
-        $updateArray = array('sigla' => (string) $request->sigla , 'nombre' => (string) $request->nombre, 'descripcion' => $request->descripcion);
-        Curso::where('id', $idCurso)->update($updateArray);
-        return redirect()->route('curso');
-    }
-
     public function eliminarCurso(Request $request){
         $curso_sel = $request->curso_sel;
         $cursos = Curso::all();
@@ -57,5 +36,17 @@ class CursoController extends Controller
         return redirect()->route('curso');
     }
 
+    public function mostrarInfo_curso(Request $request){
+        $idCurso = $request->idCurso;
+        $cursos = Curso::all();
+        $datos_curso = $cursos->where('id', $idCurso)->first();
+        return $datos_curso;
+    }
+    public function editarCurso(Request $request){
+        $idCurso = $request->id_curso;
+        $updateCurso = array('sigla' => (string) $request->sigla, 'nombre' => (string) $request->nombre, 'descripcion' => $request->descripcion);
+        Curso::where('id', $idCurso)->update($updateCurso);
+        return redirect()->route('curso');
+    }
 
 }

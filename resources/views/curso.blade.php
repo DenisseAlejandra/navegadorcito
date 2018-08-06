@@ -34,41 +34,37 @@
                 </div>
             </form>
     </div>
-
-    <!--Editar Curso-->
+    <!-- Sección editar curso -->
     <div class="col-md-4 float-left">
         <h2>Editar Curso</h2>
-        <form method="POST" action="{{ route('mostrarInfo_curso') }}" >
+
+        <form  >
         @csrf
             <div class="form-group row col-md-12">
                 <select class="form-control" id="edit_select" >
-                <option disabled selected>Seleccione un Curso</option>
+                <option disabled selected>Seleccione a un Curso</option>
                     @foreach($cursos as $curso)
-                        <option value="{{$curso->id}}" >{{$curso->sigla}}-{{$curso->nombre}}</option>
+                        <option value="{{$curso->id}}" >{{$curso->sigla}} {{$curso->nombre}}</option>
                     @endforeach
                 </select>
-
             </div>
         </form>
-
-        <form method="POST" action="{{ route('editarInfo_curso') }}">
+        <form method="POST" action="{{ route('editar_curso') }}">
         @csrf
                 <div class="form-group row">
                     <div class="col-md-12">
-
                         <input id="sigla_edit" type="text" class="form-control" name="sigla" required autofocus placeholder="Ingrese sigla">
                     </div>
                 </div>
-
                 <div class="form-group row">
                     <div class="col-md-12">
-                        <input id="nombre_edit" type="text" class="form-control" name="nombre" placeholder="Ingrese nombre del curso" required>
+                        <input id="nombre_edit" type="text" class="form-control" name="nombre" placeholder="Ingrese nombre" required>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <div class="col-md-12">
-                        <textarea id="descripcion_edit" type="text" class="form-control" name="descripcion" placeholder="Descripción del Curso" required> </textarea>
+                        <input id="descripcion_edit" type="text" class="form-control" name="descripcion" placeholder="Ingrese Descripcion" required>
                     </div>
                 </div>
 
@@ -76,8 +72,39 @@
                 <div class="form-group row col-md-12">
                     <button type="submit" class="btn btn-primary">Editar Curso</button>
                 </div>
+        </form>
+    </div>
 
-      </div>
+    <script>
+        function searchInfoCursoAjax( idCurso){
+            $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('input[name=_token]').val(),
+                    },
+                    method :'POST',
+                    url : '/admin/mostrarCurso',
+                    data : {
+                        'idCurso': idCurso
+                    },
+                    success : function(data){
+                        $("#sigla_edit").val(data.sigla);
+                        $("#nombre_edit").val(data.nombre);
+                        $("#descripcion_edit").val(data.descripcion);
+                        $("#id_curso").val(data.id);
+                    },
+                    error : function (data) {
+                        console.log(data+'error');
+                    }
+                });
+        }
+        $(document).ready(function(){
+            $('#edit_select').change( function(){
+                idCurso = $(this).val();
+                searchInfoCursoAjax(idCurso);
+            });
+
+        });
+    </script>
 
     <!-- Eliminar Curso-->
     <div class="col-md-4 float-left">
@@ -86,6 +113,7 @@
         @csrf
             <div class="form-group row col-md-12">
                 <select class="form-control" name="curso_sel" id="curso_sel" >
+                  <option disabled selected>Seleccione a un Curso</option>
                     @foreach($cursos as $curso)
                         <option value="{{$curso->id}}" >Sigla: {{$curso->sigla}} Nombre: {{$curso->nombre}}</option>
                     @endforeach
@@ -114,37 +142,6 @@
   </form>
 
 
-<script>
-
-    function searchInfoCursoAjax(idCurso){
-        $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('input[name=_token]').val(),
-                },
-                method :'POST',
-                url : '/admin/mostrarCurso',
-                data : {
-                    'idCurso': idCurso
-                },
-                success : function(data){
-                    $("#sigla_edit").val(data.sigla);
-                    $("#nombre_edit").val(data.nombre);
-                    $("#descripcion_edit").val(data.descripcion);
-                    $("#id_curso").val(data.id);
-                },
-                error : function (data) {
-                    console.log(data+'error');
-                }
-            });
-    }
-
-    $(document).ready(function(){
-        $('#curso_sel').change( function(){
-            idCurso = $(this).val();
-            searchInfoCursoAjax(idCurso);
-        });
-    });
-</script>
 
 
 @endsection

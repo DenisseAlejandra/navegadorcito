@@ -23,7 +23,7 @@ class PerfilAlumnoController extends Controller{
 		    $asignaturasCursadas = $this->asignaturasCursadas((String)$infoAlumno['rut']);
 
 		    return view('perfilAlumno')->with([ "infoAlumno" => $infoAlumno, "asignaturasActuales" => $asignaturasActuales , "asignaturasCursadas" => $asignaturasCursadas]);
-		} 
+		}
     }
 
     public function asignaturasActuales(String $rut){

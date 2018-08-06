@@ -23,12 +23,7 @@ class EstadoMatriculaController extends Controller
 
             return redirect()->route('estado');
     }
-    public function mostrarInfo_estado(Request $request){
-        $estado_sel = $request->estado_sel;
-        $estados = EstadoMatricula::all();
-        $datos_estado = $estados->find($estado_sel);
-        return redirect()->route('estado')->with($datos_estado);
-    }
+
     public function eliminarEstado(Request $request){
         $estado_sel = $request->estado_sel;
         $estado = EstadoMatricula::all();
@@ -36,10 +31,18 @@ class EstadoMatriculaController extends Controller
         $datos_estado->delete();
         return redirect()->route('estado');
     }
-    public function buscarEstado(Request $request){
-            $esta_sel = $request->est_sel;
-            $estados = EstadoMatricula::all();
-            $estado_valor = $estados->find($esta_sel);
-            return $estado_valor;
+
+    public function editarEstado(Request $request){
+        $idEstado = $request->id_estado;
+        $updateEstado = array('estado' => (string) $request->estado);
+        EstadoMatricula::where('id', $idEstado)->update($updateEstado);
+        return redirect()->route('estado');
     }
+    public function mostrarInfo_estado(Request $request){
+        $idEstado = $request->idEstado;
+        $estados = EstadoMatricula::all();
+        $datos_estado = $estados->where('id', $idEstado)->first();
+        return $datos_estado;
+    }
+
 }

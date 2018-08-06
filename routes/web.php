@@ -24,7 +24,7 @@ Route::get('/admin', 'AdminController@admin')
     ->middleware('is_admin')
     ->name('admin');
 
-
+//Perfil Alumno
 Route::get('/perfilAlumno', 'PerfilAlumnoController@perfilAlumno')
     ->middleware('is_alumno')
     ->name('perfilAlumno');
@@ -56,20 +56,17 @@ Route::get('/admin/curso', 'CursoController@curso')
     ->middleware('is_admin')
     ->name('curso');
 
-Route::post('/admin/curso', 'CursoController@mostrarInfo_curso')
-    ->name('mostrarInfo_curso');
-
 Route::post('/admin/crearCurso', 'CursoController@crearCurso')
     ->name('crear_curso');
-
-Route::post('/admin/modificarCurso', 'CursoController@modificarCurso')
-    ->name('modificar_curso');
 
 Route::post('/admin/eliminarCurso', 'CursoController@eliminarCurso')
     ->name('eliminar_curso');
 
-Route::post('/admin/editarCurso', 'CursoController@editarInfo_curso')
-    ->name('editarInfo_curso');
+Route::post('/admin/mostrarCurso', 'CursoController@mostrarInfo_curso')
+    ->name('mostrarInfo_curso');
+
+Route::post('/admin/editarCurso', 'CursoController@editarCurso')
+    ->name('editar_curso');
 
 // Instancia Curso
 Route::get('/admin/instancia', 'InstanciaCursoController@instancia')
@@ -82,12 +79,21 @@ Route::post('/admin/crearInstanciaCurso', 'InstanciaCursoController@crearInstanc
 Route::post('/admin/eliminarInstancia', 'InstanciaCursoController@eliminarInstancia')
     ->name('eliminar_instancia');
 
+Route::post('/admin/mostrarInstancia', 'InstanciaCursoController@mostrarInfo_instancia')
+    ->name('mostrarInfo_instancia');
+
+Route::post('/admin/editarInstancia', 'InstanciaCursoController@editarInstancia')
+    ->name('editar_instancia');
+
 //Estado Matricula
 Route::get('/admin/estado', 'EstadoMatriculaController@estado')
     ->middleware('is_admin')
     ->name('estado');
 
-Route::post('/admin/estado', 'EstadoMatriculaController@mostrarInfo_estado')
+Route::post('/admin/editarEstado', 'EstadoMatriculaController@editarEstado')
+    ->name('editar_estado');
+
+Route::post('/admin/mostrarEstado', 'EstadoMatriculaController@mostrarInfo_estado')
     ->name('mostrarInfo_estado');
 
 Route::post('/admin/eliminarEstado', 'EstadoMatriculaController@eliminarEstado')
@@ -114,9 +120,6 @@ Route::post('/admin/eliminarMatricula', 'matriculaController@eliminarMatricula')
 Route::get('/admin/profesor', 'ProfesorController@profesor')
     ->middleware('is_admin')
     ->name('profesor');
-
-Route::post('/admin/profesor', 'ProfesorController@mostrarInfo_profesor')
-    ->name('mostrarInfo_profesor');
 
 Route::post('/admin/crearProfesor', 'ProfesorController@crearProfesor')
     ->name('crear_profesor');
