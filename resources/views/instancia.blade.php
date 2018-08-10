@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-
 <div class="card-body col-md-12">
     <div class="float-left col-md-4">
       <h2>Crear Instancia de Curso</h2>
@@ -71,35 +69,7 @@
                 </div>
             </form>
         </div>
-        <script>
-            function searchInfoInstanciaAjax( idCurso){
-                $.ajax({
-                        headers: {
-                            'X-CSRF-TOKEN': $('input[name=_token]').val(),
-                        },
-                        method :'POST',
-                        url : '/admin/mostrarInstanciaCurso',
-                        data : {
-                            'idCurso': idCurso
-                        },
-                        success : function(data){
-                            $("#instancia").val(data.sigla);
-                            $("#agno_sel").val(data.sigla);
-                            $("#sem_sel").val(data.nombre);
-                        },
-                        error : function (data) {
-                            console.log(data+'error');
-                        }
-                    });
-            }
-            $(document).ready(function(){
-                $('#edit_select_curso').change( function(){
-                    idCurso = $(this).val();
-                    searchInfoInstanciaAjax(idCurso);
-                });
 
-            });
-        </script>
         <!-- Eliminar Instancia de Curso-->
         <div class="col-md-4 float-left">
             <h2>Eliminar Instancia de Curso</h2>
@@ -122,8 +92,6 @@
             </form>
         </div>
   </div>
-
-
 
   <!--volver-->
     <form action="{{ route('admin') }}">

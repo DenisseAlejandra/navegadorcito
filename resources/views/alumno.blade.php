@@ -118,7 +118,7 @@
             </div>
 
             <div class="form-group row col-md-12">
-                <button type="submit" class="btn btn-primary">Eliminar Alumno</button>
+                <button type="submit" class="btn btn-danger">Eliminar Alumno</button>
             </div>
         </form>
     </div>

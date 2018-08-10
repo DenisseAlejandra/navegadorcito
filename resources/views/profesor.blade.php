@@ -4,7 +4,7 @@
 <div class="card-body col-md-12">
 
     <!-- Formulario agregar profesor -->
-<!--    <div class="float-left col-md-4">
+   <div class="float-left col-md-4">
         <h2>Crear Profesor</h2>
         <form method="POST" action="{{ route('crear_profesor') }}" >
             @csrf
@@ -49,7 +49,7 @@
                         <button type="submit" class="btn btn-primary">Crear Profesor</button>
                 </div>
         </form>
-    </div>  -->
+    </div>
     <!-- Fin formulario agregar profesor -->
     <!-- Sección editar alumno -->
     <div class="col-md-4 float-left">
@@ -130,10 +130,9 @@
         });
     </script>
 
-
       <!-- Fin sección editar alumno -->
     <!-- Formulario eliminar profesor -->
-<!--    <div class="col-md-4 float-left">
+    <div class="col-md-4 float-left">
         <h2>Eliminar Profesor</h2>
         <form method="POST" action="{{ route('eliminar_profesor') }}">
         @csrf
@@ -147,14 +146,11 @@
             </div>
 
             <div class="form-group row col-md-12">
-                <button type="submit" class="btn btn-primary">Eliminar Profesor</button>
+                <button type="submit" class="btn btn-danger">Eliminar Profesor</button>
             </div>
         </form>
-    </div> -->
-
+    </div>
     <!-- Fin formulario eliminar profesor -->
-
-
 </div>
 
 <!--volver-->
@@ -167,6 +163,5 @@
     </div>
   </div>
 </form>
-
 
 @endsection
