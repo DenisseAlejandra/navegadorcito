@@ -28,7 +28,7 @@ Route::get('/perfilAlumno', 'PerfilAlumnoController@perfilAlumno')
     ->middleware('is_alumno')
     ->name('perfilAlumno');
 
-Route::get('/asignaturaAlumno' , 'AsignaturaAlumnoController@asignaturaAlumno')
+Route::get('/asignaturaAlumno/{curso_id}' , 'AsignaturaAlumnoController@instanciaCurso')
     ->middleware('is_alumno')
     ->name('asignaturaAlumno');
 
@@ -81,8 +81,12 @@ Route::post('/admin/eliminarInstancia', 'InstanciaCursoController@eliminarInstan
 Route::post('/admin/mostrarInstancia', 'InstanciaCursoController@mostrarInfo_instancia')
     ->name('mostrarInfo_instancia');
 
+Route::post('/admin/mostrarInstanciaDeCurso', 'InstanciaCursoController@mostrarInstanciaDeCurso')
+    ->name('mostrar_instancias_de_curso');
+
 Route::post('/admin/editarInstancia', 'InstanciaCursoController@editarInstancia')
     ->name('editar_instancia');
+
 
 //Estado Matricula
 Route::get('/admin/estado', 'EstadoMatriculaController@estado')
@@ -101,7 +105,7 @@ Route::post('/admin/eliminarEstado', 'EstadoMatriculaController@eliminarEstado')
 Route::post('/admin/crearEstadoMatricula', 'estadoMatriculaController@crearEstadoMatricula')
     ->name('crear_estadoMatricula');
 
-//Estado Matricula Instacia Curso
+// Matricula Instacia Curso
 Route::get('/admin/matricula', 'matriculaController@matricula')
     ->middleware('is_admin')
     ->name('matricula');
@@ -131,3 +135,13 @@ Route::post('/admin/editarProfesor', 'ProfesorController@editarProfesor')
 
 Route::post('/admin/mostrarProfesor', 'ProfesorController@mostrarInfo_profesor')
     ->name('mostrarInfo_profesor');
+
+//Perfil Profesor
+Route::get('/perfilProfesor', 'PerfilProfesorController@perfilProfesor')
+    ->middleware('is_profesor')
+    ->name('perfilProfesor');
+
+
+Route::get('/asignaturaProfesor' , 'AsignaturaProfesorController@asignaturaProfesor')
+    ->middleware('is_profesor')
+    ->name('asignaturaProfesor');

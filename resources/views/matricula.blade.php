@@ -2,12 +2,14 @@
 
 @section('content')
 <div class="card-body col-md-12">
+
+      <!-- Sección Crear MAtricula -->
     <div class="float-left col-md-4">
         <h2>Crear Matricula</h2>
-        <form id="form-matricula" method="POST" action="{{ route('crear_matricula') }}#form-matricula" >
+        <form id="form-matricula" method="POST" action="{{ route('crear_matricula') }}" >
           @csrf
               <div class="form-group row">
-                  <select class="form-control" name="alumno_sel" id="alumno_sel">
+                  <select class="form-control" name="rutAlumno" id="rutAlumno">
                       <option  disabled hidden selected>Selecciona un alumno</option>
                       @foreach($alumnos as $alumno)
                           <option value="{{$alumno->rut}}" >{{$alumno->nombres}} {{$alumno->apellido_paterno}} {{$alumno->apellido_materno}}</option>
@@ -16,7 +18,7 @@
               </div>
 
               <div class="form-group row">
-                  <select class="form-control" name="curso_sel" id="curso_sel" onchange="mostrarInstancia({{$instancias}})">
+                  <select class="form-control" name="idCurso" id="idCurso" onchange="mostrarInstancia({{$instancias}})">
                       <option  disabled hidden selected>Selecciona un curso</option>
                       @foreach($cursos as $curso)
                           <option value="{{$curso->id}}" >{{$curso->sigla}} &nbsp;&nbsp;{{$curso->nombre}}</option>
@@ -24,13 +26,13 @@
                   </select>
               </div>
               <div class="form-group row">
-                  <select class="form-control" name="instancia_sel" id="instancia_sel">
+                  <select class="form-control" name="idInstancia" id="idInstancia">
                       <option  disabled hidden selected>Selecciona una instancia</option>
                   </select>
               </div>
 
               <div class="form-group row">
-                  <select class="form-control" name="est_sel" id="est_sel">
+                  <select class="form-control" name="idEstado" id="idEstado">
                       <option  disabled hidden selected>Selecciona un estado</option>
                       @foreach($estados as $estado)
                           <option value="{{$estado->id}}" >{{$estado->estado}}</option>
@@ -47,7 +49,9 @@
               </div>
         </form>
       </div>
-      <div class="col-md-4 float-left">
+
+      <!-- Sección editar curso -->
+      <!--<div class="col-md-4 float-left">
             <h2>Editar Matricula</h2>
             <form id="form-editar-matricula" method="POST" action="{{ route('modificar_matricula') }}#form-editar-matricula" >
               @csrf
@@ -70,10 +74,11 @@
             </form>
         </div>
   </div>
-
+-->
+    <!-- Sección editar curso -->
   <div class="col-md-4 float-left">
           <h2>Eliminar Matricula</h2>
-          <form id="form-eliminar-matricula" method="POST" action="{{ route('eliminar_matricula') }}#form-eliminar-matricula" >
+          <form id="form-eliminar-matricula" method="POST" action="{{ route('eliminar_matricula') }}" >
             @csrf
                 <div class="form-group row">
                     <select class="form-control" name="matricula_sel" id="matricula_sel">
@@ -105,8 +110,8 @@
 
 <script>
     function mostrarInstancia(instancias){
-      var selectCurso	=	document.getElementById("curso_sel");
-      var selectInstancia	=	document.getElementById("instancia_sel");
+      var selectCurso	=	document.getElementById("idCurso");
+      var selectInstancia	=	document.getElementById("idInstancia");
       var cursoSel = selectCurso.options[selectCurso.selectedIndex].value;
       selectInstancia.options.length=0;
       for(var instancia of instancias){

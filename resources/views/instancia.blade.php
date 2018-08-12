@@ -44,8 +44,19 @@
           </form>
         </div>
         <!--Editar Instancia de Curso-->
-        <div class="col-md-4 float-left">
+<!--        <div class="col-md-4 float-left">
             <h2>Editar Instancia Curso</h2>
+            <form onchange="mostrar_instancias_de_curso">
+            @csrf
+                <div class="form-group row col-md-12">
+                    <select class="form-control" id="edit_select_curso" >
+                    <option disabled selected>Seleccione un Curso</option>
+                    @foreach($cursos as $curso)
+                        <option value="{{$curso->id}}" >{{$curso->nombre}}</option>
+                    @endforeach
+                    </select>
+                </div>
+            </form>
             <form >
             @csrf
                 <div class="form-group row col-md-12">
@@ -68,7 +79,7 @@
                     </select>
                 </div>
             </form>
-        </div>
+        </div>   -->
 
         <!-- Eliminar Instancia de Curso-->
         <div class="col-md-4 float-left">

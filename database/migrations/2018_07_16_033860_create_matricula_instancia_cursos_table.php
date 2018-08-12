@@ -19,17 +19,20 @@ class CreateMatriculaInstanciaCursosTable extends Migration
             $table->foreign('alumno_id')
                   ->references('rut')
                   ->on('alumnos')
-                  ->onDelete('cascade');
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
             $table->unsignedInteger('instanciaCurso_id');
             $table->foreign('instanciaCurso_id')
-                  ->references('id')
+                  ->references('curso_id')
                   ->on('instancia_cursos')
-                  ->onDelete('cascade');
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
             $table->unsignedInteger('estadoMatricula_id');
             $table->foreign('estadoMatricula_id')
                   ->references('id')
                   ->on('estado_matriculas')
-                  ->onDelete('cascade');
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
             $table->timestamps();
         });
     }

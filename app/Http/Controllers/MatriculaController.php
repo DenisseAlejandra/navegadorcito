@@ -30,15 +30,15 @@ class MatriculaController extends Controller
         $matricula = new MatriculaInstanciaCurso;
 
         $instanciacon = new InstanciaCursoController;
-        $instancia = $instanciacon->buscarInstancia($request);
+        $instancia = $instanciacon->mostrarInfo_instancia($request);
         $matricula->instanciaCurso()->associate($instancia);
 
         $alumnocon= new AlumnoController;
-        $alumno = $alumnocon->buscarAlumno($request->alumno_sel);
+        $alumno = $alumnocon->mostrarInfo_alumno($request);
         $matricula->alumno()->associate($alumno->rut);
 
         $estadocon = new EstadoMatriculaController;
-        $estado = $estadocon->buscarEstado($request);
+        $estado = $estadocon->mostrarInfo_estado($request);
         $matricula->estadoMatricula()->associate($estado);
 
         $matricula->save();

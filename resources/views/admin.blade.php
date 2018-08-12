@@ -73,7 +73,7 @@
       <div class="form-group row mb-0">
           <div class="col-md-4 offset-md-3">
               <button type="submit" class="btn btn-primary" value="enviar" onclick="location.href = '{{ route('profesor') }}'"/>
-                  {{ __('Matricula Profesores') }}
+                  {{ __('Profesores') }}
               </button>
 
           </div>

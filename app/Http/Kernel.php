@@ -61,5 +61,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'is_admin' => \navegadorcito\Http\Middleware\IsAdmin::class,
         'is_alumno' => \navegadorcito\Http\Middleware\IsAlumno::class,
+        'is_profesor' => \navegadorcito\Http\Middleware\IsProfesor::class,
     ];
 }

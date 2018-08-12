@@ -40,16 +40,27 @@ class InstanciaCursoController extends Controller
    }
 
    public function eliminarInstancia(Request $request){
-       $instancia_sel = $request->$instancia_sel;
+       $instancia_sel = $request->idInstancia;
        $instancias = Instancia::all();
        $datos_instancia = $instancias->find($instancia_sel);
        $datos_instancia->delete();
        return redirect()->route('instancia');
    }
+
+   public function mostrarInstanciasDeCurso(Request $request){
+      $curso_id = $request->edit_select_curso;
+      $todas = InstanciaCurso::join('cursos', 'instancia_cursos.curso_id' , '=' , 'cursos.id')
+                    ->join('profesors','instancia_cursos.profesorId','=','profesors.rut')
+                    ->select('cursos.nombre', 'cursos.id', 'profesors.nombre')
+                    ->get();
+      return redirect()->route('instancia');
+   }
    public function mostrarInfo_instancia(Request $request){
        $idInstancia = $request->idInstancia;
        $instancias = InstanciaCurso::all();
-       $datos_instancia = $cursos->where('id', $idCurso)->first();
-       return $datos_curso;
+       $datos_instancia = $instancias->where('id', $idInstancia)->first();
+       return $datos_instancia;
    }
+
+
 }
