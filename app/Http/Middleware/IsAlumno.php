@@ -15,9 +15,11 @@ class IsAlumno
      */
     public function handle($request, Closure $next)
     {
+        //dd($next);
         if(auth()->User()->isAlumno()) {
             return $next($request);
         }
         return redirect('home');
+        //return view('perfilAlumno');
     }
 }

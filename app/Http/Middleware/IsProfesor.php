@@ -15,6 +15,7 @@ class IsProfesor
      */
     public function handle($request, Closure $next)
     {
+        //dd($next);
         if(auth()->User()->isProfesor()) {
             return $next($request);
         }

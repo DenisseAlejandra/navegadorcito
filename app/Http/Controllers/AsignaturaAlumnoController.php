@@ -18,10 +18,11 @@ class AsignaturaAlumnoController extends Controller{
     public function asignaturaAlumno(){
       $user = Auth::user();
       $alumno = Alumno::where('id_user', $user->id )->first();
-      $cursos = $alumno->matricula;
+      $cursos = $alumno->matriculaInstanciaCurso;
 
-      return view('asignaturaAlumno')->with('alumno',$alumno)
-                            ->with('cursos',$cursos);
+      return view('asignaturaAlumno')
+            ->with('alumno',$alumno)
+            ->with('cursos',$cursos);
     }
 
     public function instanciaCurso($curso_id)

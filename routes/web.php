@@ -142,6 +142,9 @@ Route::get('/perfilProfesor', 'PerfilProfesorController@perfilProfesor')
     ->name('perfilProfesor');
 
 
-Route::get('/asignaturaProfesor' , 'AsignaturaProfesorController@asignaturaProfesor')
+Route::get('/asignaturaProfesor/{curso_id}' , 'PerfilProfesorController@asignaturaProfesor')
     ->middleware('is_profesor')
     ->name('asignaturaProfesor');
+
+Route::get('/cursoProfesorAlumno/{rut}','PerfilProfesorController@fichaAlumno')
+	->name('fichaAlumno');

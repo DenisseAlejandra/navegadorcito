@@ -18,6 +18,7 @@ class PerfilAlumnoController extends Controller{
     public function perfilAlumno(){
     	if (Auth::check()){
 		    $userId = Auth::getUser()->id;
+
 		    $infoAlumno = Alumno::where('user_id', $userId)->first();
 		    $asignaturasActuales = $this->asignaturasActuales((String)$infoAlumno['rut']);
 		    $asignaturasCursadas = $this->asignaturasCursadas((String)$infoAlumno['rut']);
@@ -25,6 +26,8 @@ class PerfilAlumnoController extends Controller{
 		    return view('perfilAlumno')
             ->with([ "infoAlumno" => $infoAlumno, "asignaturasActuales" => $asignaturasActuales , "asignaturasCursadas" => $asignaturasCursadas]);
 		  }
+
+      return view('perfilAlumno');
     }
 
     public function asignaturasActuales(String $rut){
